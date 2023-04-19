@@ -7,16 +7,16 @@ import sqlite3
 db = sqlite3.connect("library.db")
 cur = db.cursor()
 
-cur.execute('DROP TABLE IF EXISTS Game')
+cur.execute('DROP TABLE IF EXISTS Games')
 
 
-cur.execute('''CREATE TABLE IF NOT EXISTS Game(
+cur.execute('''CREATE TABLE IF NOT EXISTS Games(
                 id TEXT PRIMARY KEY, name TEXT, 
                 brand TEXT,  price FLOAT)''')
 
 library = []
 
-for i in range(24, 72, 24):
+for i in range(24, 1000, 24):
     URL = 'https://www.gamestop.ca/SearchResult/QuickSearchAjax?productType=2&typesorting=0&sdirection=ascending&skippos={}&takenum=24'.format(str(i))
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -32,9 +32,9 @@ for i in range(24, 72, 24):
 
     print("At index:", i)
 
-print(games)
+print("Adding to sqlite database...")
 # Prepare insert statement
-insert_statement = 'INSERT INTO Game (id, name, price, brand) VALUES (?, ?, ?, ?)'
+insert_statement = 'INSERT INTO Games (id, name, price, brand) VALUES (?, ?, ?, ?)'
 
 # Convert list of dictionaries into a list of tuples, in order.
 values = [(item['id'], item['name'], item['price'], item['brand']) for item in library]
@@ -44,6 +44,8 @@ cur.executemany(insert_statement, values)
 
 # Commit transaction
 db.commit()
+
+print("Transaction committed")
 
 # Close connection
 db.close()
