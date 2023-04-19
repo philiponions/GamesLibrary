@@ -33,7 +33,7 @@ namespace GamesLibrary.Controllers
 
         // GET: api/Games/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Game>> GetGame(long id)
+        public async Task<ActionResult<Game>> GetGame(string id)
         {
           if (_context.Games == null)
           {
@@ -52,7 +52,7 @@ namespace GamesLibrary.Controllers
         // PUT: api/Games/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGame(long id, Game game)
+        public async Task<IActionResult> PutGame(string id, Game game)
         {
             if (id != game.Id)
             {
@@ -89,15 +89,22 @@ namespace GamesLibrary.Controllers
           {
               return Problem("Entity set 'GameContext.Games'  is null.");
           }
+
+            if (await _context.Games.FindAsync(game.Id) != null)
+            {
+                return Conflict();
+            }
+
             _context.Games.Add(game);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }
+        
 
         // DELETE: api/Games/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGame(long id)
+        public async Task<IActionResult> DeleteGame(string id)
         {
             if (_context.Games == null)
             {
@@ -115,7 +122,7 @@ namespace GamesLibrary.Controllers
             return NoContent();
         }
 
-        private bool GameExists(long id)
+        private bool GameExists(string id)
         {
             return (_context.Games?.Any(e => e.Id == id)).GetValueOrDefault();
         }

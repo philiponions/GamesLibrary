@@ -2,11 +2,11 @@
 namespace GamesLibrary.Models
 {
 	public class Game
-	{
-		public long Id { get; set; }
-        public long Name { get; set; }
-        public long Price { get; set; }
-        public long Brand { get; set; }
+	{        
+		public string? Id { get; set; }
+        public string? Name { get; set; }
+        public float Price { get; set; }
+        public string? Brand { get; set; }
 
     }
 }
