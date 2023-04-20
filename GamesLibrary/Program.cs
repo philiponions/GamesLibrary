@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "ToDo API",
+        Title = "Games Library",
         Description = "An ASP.NET Core Web API for retrieving information about over 1000 video games!",        
     });
     // using System.Reflection;
