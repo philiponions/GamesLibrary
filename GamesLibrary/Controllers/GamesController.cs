@@ -69,8 +69,11 @@ namespace GamesLibrary.Controllers
             return await games.ToListAsync();
         }
 
-
-        // GET: api/Games
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("brand/{brand}")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames(string brand)
         {
