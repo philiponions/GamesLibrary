@@ -21,6 +21,9 @@ namespace GamesLibrary.Controllers
         }
 
         // GET: api/Games
+        /// <summary>
+        /// Gets a list of games of games by page number
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames(int pageNumber = 1, int pageSize = 10)
         {
@@ -37,6 +40,9 @@ namespace GamesLibrary.Controllers
         }
 
         // GET: api/Games
+        /// <summary>
+        /// Gets a list of games based on a specified price.
+        /// </summary>
         [HttpGet("price")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames([FromQuery] string condition, [FromQuery] float price)
         {
@@ -69,11 +75,10 @@ namespace GamesLibrary.Controllers
             return await games.ToListAsync();
         }
 
+        // GET: api/Games
         /// <summary>
-        /// Deletes a specific TodoItem.
+        /// Gets a list of games from a specific console.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [HttpGet("brand/{brand}")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames(string brand)
         {
@@ -116,6 +121,9 @@ namespace GamesLibrary.Controllers
             return await games.ToListAsync();
         }
 
+        /// <summary>
+        /// Gets one or more games based on a specified substring
+        /// </summary>
         [HttpGet("name")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGameByName(string searchString)
         {
@@ -135,7 +143,9 @@ namespace GamesLibrary.Controllers
             return await games.ToListAsync();
         }
 
-        // GET: api/Games/5
+        /// <summary>
+        /// Grabs a game by id
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGameById(string id)
         {
