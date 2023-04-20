@@ -19,13 +19,6 @@ After creating a bunch of API's with Node.js and Express I wanted to find anothe
 - Containerizing applications via Docker
 - Web scraping with Python and BeautifulSoup 4
 
-
-
-## Getting started
-If you want to use the API locally, you will need to have Visual Studio and Docker installed on your machine.
-
-Clone this repo and open the solution in Visual Studio. Run the Dockerfile which can be found under the /GamesLibrary directory
-
 ## API Endpoints
 ### GET: api/Games
 Retrieves a list of games by page number.
