@@ -22,7 +22,7 @@ namespace GamesLibrary.Controllers
 
         // GET: api/Games
         /// <summary>
-        /// Gets a list of games of games by page number
+        /// Retrieves a list of games by page number
         /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames(int pageNumber = 1, int pageSize = 10)
@@ -41,7 +41,7 @@ namespace GamesLibrary.Controllers
 
         // GET: api/Games
         /// <summary>
-        /// Gets a list of games based on a specified price.
+        /// Gets a list of games based on a specified price
         /// </summary>
         [HttpGet("price")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames([FromQuery] string condition, [FromQuery] float price)
@@ -77,7 +77,7 @@ namespace GamesLibrary.Controllers
 
         // GET: api/Games
         /// <summary>
-        /// Gets a list of games from a specific console.
+        /// Grabs a list of games from a specific console
         /// </summary>
         [HttpGet("brand/{brand}")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames(string brand)
