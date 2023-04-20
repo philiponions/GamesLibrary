@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gameslibrary:
+    image: ${DOCKER_REGISTRY-}gameslibrary
+    build:
+      context: .
+      dockerfile: GamesLibrary/Dockerfile
